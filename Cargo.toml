@@ -1,0 +1,31 @@
+[package]
+name = "tokio_learn"
+version = "0.1.0"
+edition = "2021"
+author =["zjon234gmail@.com"]
+# See more keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html
+
+[dependencies] # 生产环境包
+tokio = "1.14.0"
+
+[dev-dependencies] # 开发环境包
+tokio = "1.14.0"
+
+[profile.dev]
+
+opt-level = 0 #控制编译器的 --opt-level 参数，也就是优化参数
+
+debug=true # 控制编译器是否开启 `-g` 参数
+
+
+[profile.release]
+
+opt-level=3
+
+debug=false
+
+[profile.test]
+opt-level=0
+
+debug=true
+
