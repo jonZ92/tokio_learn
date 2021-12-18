@@ -33,4 +33,13 @@ mod tests {
             println!("错了 错了");
         };
     }
+
+
+
+    fn result_test()->Result<(),std::error::Error>{
+
+        Ok(())
+    }
+
+
 }

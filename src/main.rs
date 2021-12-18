@@ -50,14 +50,12 @@ async fn main() -> Result<(), Box<dyn std::error::Error>> {
             println!("hello world");
             loop {
                 let n = match socket.read(&mut buf).await {
-                 
                     Ok(n) if n == 0 => {println!("n is = {}",n); return},
                     Ok(n) => n,
                     Err(e) => {
                         eprintln!("failed to read from socket; err = {:?}", e);
                         return;
                     }
-                    
                 };
                 println!("{:?}",&buf[0..n]);
                 let ok="OK".as_bytes();
