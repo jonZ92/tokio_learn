@@ -29,12 +29,12 @@ async fn main() -> Result<(), Box<dyn std::error::Error>> {
     let listener = TcpListener::bind("cl").await?;
 
     loop {
-        let (mut socket, addr) = listener.accept().await?;
+        let (mut _stream, _addr) = listener.accept().await?;
 
-        println!("{} connected", addr);
+        println!("{} connected", _addr);
 
         tokio::spawn(async move {
-            let (reader, mut writer) = socket.split();
+            let (reader, mut writer) = _stream.split();
 
             let mut readers = BufReader::new(reader);
 
