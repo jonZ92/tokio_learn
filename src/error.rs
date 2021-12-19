@@ -16,9 +16,7 @@ use std::fmt::{Debug, Error, Formatter};
 use std::result::Result;
 #[derive(Debug)]
 pub enum ErrorCode {
-    ServerListener,
-    ServerAccept,
-    BuffOverflow,
+    EmptyData,
     None,
 }
 
@@ -33,9 +31,7 @@ impl NError {
 
     pub fn error_description(&self) -> &'static str {
         match self.err_code {
-            ErrorCode::ServerListener => return " Server Lister error",
-            ErrorCode::ServerAccept => return " Server Accept error",
-            ErrorCode::BuffOverflow => return " Server Overflow error",
+            ErrorCode::EmptyData => return "Empty data Exception",
             _ => return "unkown error",
         }
     }
@@ -50,8 +46,6 @@ impl Debug for NError {
 }
 
 /*******************************
- *
- *
  * 自定义  打印 格式
  *
  * println!("{}",NError::new(1));
@@ -72,7 +66,7 @@ mod tests_ {
     use super::*;
     #[test]
     fn test_() {
-        let er = NError::new(ErrorCode::ServerListener);
+        let er = NError::new(ErrorCode::None);
         println!("{} ", er);
     }
 }
